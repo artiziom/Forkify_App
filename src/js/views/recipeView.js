@@ -117,5 +117,22 @@ import {Fraction} from 'fractional';
           </li>
           `;
     }
+    addHandlerRender(handler){
+        window.addEventListener('hashchange', handler);
+        window.addEventListener('load', handler);
+    }
+    renderError(message){
+        const markup = `<div class="error">
+        <div>
+        <svg>
+        <use href="${icons}#icon-alert-triangle"></use>
+        </svg>
+        </div>
+        <p>${message}</p>
+        </div>`;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML('afterbegin',markup)
+        
+    }
 }
 export default new RecipeView;
